@@ -1,6 +1,6 @@
 <div align="center">
 
-# 💌 ** KooL's Arch - Hyprland Install Script ** 💌
+# 💌 ** KooL's Arch - Niri Install Script ** 💌
 
 <p align="center">
   <img src="https://raw.githubusercontent.com/JaKooLit/Hyprland-Dots/main/assets/latte.png" width="400" />
@@ -24,7 +24,7 @@
 </p>
 
 <div align="center">
-👇 KOOL's Hyprland-Dots related Links 👇
+👇 KOOL's Niri Setup related Links 👇
 <br/>
 </div>
 <div align="center">
@@ -43,7 +43,7 @@
 
 <h3 align="center">
 	<img src="https://github.com/JaKooLit/Telegram-Animated-Emojis/blob/main/Activity/Sparkles.webp" alt="Sparkles" width="38" height="38" />
-	KooL Hyprland-Dotfiles Showcase 
+	KooL Niri Setup Showcase
 	<img src="https://github.com/JaKooLit/Telegram-Animated-Emojis/blob/main/Activity/Sparkles.webp" alt="Sparkles" width="38" height="38" />
 </h3>
 
@@ -60,13 +60,13 @@ https://github.com/user-attachments/assets/49bc12b2-abaf-45de-a21c-67aacd9bb872
 
     
 ### 🪧🪧🪧 ANNOUNCEMENT 🪧🪧🪧
-- This Repo does not contain Hyprland Dots or configs! Dotfiles can be checked here [`Hyprland-Dots`](https://github.com/JaKooLit/Hyprland-Dots) . During installation, if you opt to copy pre-configured dots, it will be downloaded from that centralized repo.
-- Hyprland-Dots use are constantly evolving / improving. you can check CHANGELOGS here [`Hyprland-Dots-Changelogs`](https://github.com/JaKooLit/Hyprland-Dots/wiki/Changelogs) 
-- Since the Hyprland-Dots are evolving, some of the screenshots maybe old
-- the wallpaper offered to be downloaded towards the end is from this [`REPO`](https://github.com/JaKooLit/Wallpaper-Bank)
+- This Repo does not contain Niri-specific configs! Compatible dotfiles can be checked here [`Compatible-Dotfiles`](https://github.com/JaKooLit/Hyprland-Dots) . During installation, if you opt to copy pre-configured dots, compatible configurations will be used.
+- Niri uses a different configuration format (KDL) compared to Hyprland, but many supporting tools (waybar, rofi, etc.) remain compatible
+- Some screenshots may show Hyprland-specific features that work differently in Niri
+- The wallpaper offered to be downloaded towards the end is from this [`REPO`](https://github.com/JaKooLit/Wallpaper-Bank)
 
 > [!IMPORTANT]
-> install a backup tool like `snapper` or `timeshift`. and Backup your system before installing hyprland using this script (HIGHLY RECOMMENDED)
+> install a backup tool like `snapper` or `timeshift`. and Backup your system before installing niri using this script (HIGHLY RECOMMENDED)
 
 > [!CAUTION] 
 > Download this script on a directory where you have write permissions. ie. HOME. Or any directory within your home directory. Else script will fail
@@ -79,7 +79,7 @@ https://github.com/user-attachments/assets/49bc12b2-abaf-45de-a21c-67aacd9bb872
 - This script will install pipewire and will also disable or will uninstall pulseaudio. If you dont want it, edit install.sh, about line 191 and comment the line  `execute_script "pipewire.sh"` or you can simply just delete pipewire.sh in install-scripts directory before installing. 
 
 #### ✨ Customize the packages to be installed
-- inside the install-scripts directory, you can edit 00-hypr-pkgs.sh. Care though as the Hyprland Dots may not work properly!
+- inside the install-scripts directory, you can edit 01-niri-pkgs.sh. Care though as the compatible dotfiles may not work properly!
 
 #### 🚩 Switching to SDDM assuming you have GDM installed and running
 - if you really want switch to SDDM from GDM, you need to disable the gdm first.
@@ -114,8 +114,8 @@ sh <(curl -L https://raw.githubusercontent.com/JaKooLit/Arch-Hyprland/main/auto-
 - clone this repo (latest commit only) to reduce file size download by using git. Change directory, make executable and run the script
 
 ```bash
-git clone --depth=1 https://github.com/JaKooLit/Arch-Hyprland.git ~/Arch-Hyprland
-cd ~/Arch-Hyprland
+git clone --depth=1 https://github.com/JaKooLit/Arch-Hyprland.git ~/Arch-Niri
+cd ~/Arch-Niri
 chmod +x install.sh
 ./install.sh
 ```
@@ -223,7 +223,8 @@ env = WLR_RENDERER_ALLOW_SOFTWARE,1
 - Want to contribute on This Installer? Click [`HERE`](https://github.com/JaKooLit/Arch-Hyprland/blob/main/CONTRIBUTING.md) for a guide how to contribute
 
 #### 👍👍👍 Thanks and Credits!
-- [`Hyprland`](https://hyprland.org/) Of course to Hyprland and @vaxerski for this awesome Dynamic Tiling Manager.
+- [`Niri`](https://github.com/YaLTeR/niri) Of course to Niri and @YaLTeR for this awesome Scrollable Tiling Wayland Compositor.
+- [`Hyprland`](https://hyprland.org/) Original inspiration from Hyprland and @vaxerski for the Dynamic Tiling Manager concept.
 
 ## 💖 Support
 - a Star on my Github repos would be nice 🌟

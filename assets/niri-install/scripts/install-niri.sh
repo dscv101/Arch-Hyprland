@@ -21,20 +21,15 @@ printf "\n%.0s" {1..2}
 
 # List of packages to install / update
 packages=(
-    "aquamarine"
-    "hyprutils"
-    "hyprcursor"
-    "hyprwayland-scanner"
-    "hyprgraphics"
-    "hyprlang"
-    "hyprland-protocols"
-    "hyprland-qt-support"
-    "hyprland-qtutils"
-    "hyprland"
-    "hyprlock"
-    "hypridle"
-    "xdg-desktop-portal-hyprland"
-    "hyprpolkitagent"
+    "niri"
+    "fuzzel"
+    "mako"
+    "swayidle"
+    "swaylock"
+    "swaybg"
+    "xwayland-satellite"
+    "xdg-desktop-portal-gtk"
+    "alacritty"
 )
 
 # rotating stars progress
@@ -54,7 +49,7 @@ show_progress() {
 }
 
 printf "\n%.0s" {1..1}
-printf "${NOTE} Installing ${BLUE}non-git hyprland version${RESET}....."
+printf "${NOTE} Installing ${BLUE}Niri and ecosystem packages${RESET}....."
 printf "\n%.0s" {1..1}
 
 # Installing packages
@@ -76,5 +71,5 @@ for package in "${packages[@]}"; do
 done
 
 printf "\n%.0s" {1..1}
-printf "${OK} Done!! Now you NEED to ${YELLOW}EXIT${RESET} Hyprland and Re-Login! Enjoy!!!!"
+printf "${OK} Done!! Now you NEED to ${YELLOW}REBOOT${RESET} or Re-Login to use Niri! Enjoy!!!!"
 printf "\n%.0s" {1..2}

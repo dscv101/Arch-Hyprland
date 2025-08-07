@@ -25,7 +25,7 @@ if [ ! -d Install-Logs ]; then
 fi
 
 # Set the name of the log file to include the current date and time
-LOG="Install-Logs/01-Hyprland-Install-Scripts-$(date +%d-%H%M%S).log"
+LOG="Install-Logs/01-Niri-Install-Scripts-$(date +%d-%H%M%S).log"
 
 # Check if running as root. If root, script will exit
 if [[ $EUID -eq 0 ]]; then
@@ -74,10 +74,10 @@ echo -e "\e[35m
 printf "\n%.0s" {1..1} 
 
 # Welcome message using whiptail (for displaying information)
-whiptail --title "KooL Arch-Hyprland (2025) Install Script" \
-    --msgbox "Welcome to KooL Arch-Hyprland (2025) Install Script!!!\n\n\
+whiptail --title "KooL Arch-Niri (2025) Install Script" \
+    --msgbox "Welcome to KooL Arch-Niri (2025) Install Script!!!\n\n\
 ATTENTION: Run a full system update and Reboot first !!! (Highly Recommended)\n\n\
-NOTE: If you are installing on a VM, ensure to enable 3D acceleration else Hyprland may NOT start!" \
+NOTE: If you are installing on a VM, ensure to enable 3D acceleration else Niri may NOT start!" \
     15 80
 
 # Ask if the user wants to proceed
@@ -263,11 +263,11 @@ options_command+=(
     "bluetooth" "Do you want script to configure Bluetooth?" "OFF"
     "thunar" "Do you want Thunar file manager to be installed?" "OFF"
     "quickshell" "Install quickshell for Desktop-Like Overview?" "OFF"
-    "xdph" "Install XDG-DESKTOP-PORTAL-HYPRLAND (for screen share)?" "OFF"
+    "xdpg" "Install XDG-DESKTOP-PORTAL-GTK (for screen share)?" "OFF"
     "zsh" "Install zsh shell with Oh-My-Zsh?" "OFF"
     "pokemon" "Add Pokemon color scripts to your terminal?" "OFF"
     "rog" "Are you installing on Asus ROG laptops?" "OFF"
-    "dots" "Download and install pre-configured KooL Hyprland dotfiles?" "OFF"
+    "dots" "Download and install pre-configured KooL Niri dotfiles?" "OFF"
 )
 
 # Capture the selected options before the while loop starts
@@ -305,8 +305,8 @@ while true; do
     # If "dots" is not selected, show a note and ask the user to proceed or return to choices
     if [[ "$dots_selected" == "OFF" ]]; then
         # Show a note about not selecting the "dots" option
-        if ! whiptail --title "KooL Hyprland Dot Files" --yesno \
-        "You have not selected to install the pre-configured KooL Hyprland dotfiles.\n\nKindly NOTE that if you proceed without Dots, Hyprland will start with default vanilla Hyprland configuration and I won't be able to give you support.\n\nWould you like to continue install without KooL Hyprland Dots or return to choices/options?" \
+        if ! whiptail --title "KooL Niri Dot Files" --yesno \
+        "You have not selected to install the pre-configured KooL Niri dotfiles.\n\nKindly NOTE that if you proceed without Dots, Niri will start with default vanilla Niri configuration and I won't be able to give you support.\n\nWould you like to continue install without KooL Niri Dots or return to choices/options?" \
         --yes-button "Continue" --no-button "Return" 15 90; then
             echo "🔙 Returning to options..." | tee -a "$LOG"
             continue
@@ -331,7 +331,7 @@ while true; do
         continue 
     fi
 
-    echo "👌 ${OK} You confirmed your choices. Proceeding with ${SKY_BLUE}KooL 🇵🇭 Hyprland Installation...${RESET}" | tee -a "$LOG"
+    echo "👌 ${OK} You confirmed your choices. Proceeding with ${SKY_BLUE}KooL 🇵🇭 Niri Installation...${RESET}" | tee -a "$LOG"
     break  
 done
 
@@ -352,10 +352,10 @@ fi
 
 sleep 1
 
-# Run the Hyprland related scripts
-echo "${INFO} Installing ${SKY_BLUE}KooL Hyprland additional packages...${RESET}" | tee -a "$LOG"
+# Run the Niri related scripts
+echo "${INFO} Installing ${SKY_BLUE}KooL Niri additional packages...${RESET}" | tee -a "$LOG"
 sleep 1
-execute_script "01-hypr-pkgs.sh"
+execute_script "01-niri-pkgs.sh"
 
 echo "${INFO} Installing ${SKY_BLUE}pipewire and pipewire-audio...${RESET}" | tee -a "$LOG"
 sleep 1
@@ -365,9 +365,9 @@ echo "${INFO} Installing ${SKY_BLUE}necessary fonts...${RESET}" | tee -a "$LOG"
 sleep 1
 execute_script "fonts.sh"
 
-echo "${INFO} Installing ${SKY_BLUE}Hyprland...${RESET}"
+echo "${INFO} Installing ${SKY_BLUE}Niri...${RESET}"
 sleep 1
-execute_script "hyprland.sh"
+execute_script "niri.sh"
 
 # Clean up the selected options (remove quotes and trim spaces)
 selected_options=$(echo "$selected_options" | tr -d '"' | tr -s ' ')
@@ -408,9 +408,9 @@ for option in "${options[@]}"; do
             echo "${INFO} Installing ${SKY_BLUE}quickshell for Desktop Overview...${RESET}" | tee -a "$LOG"
             execute_script "quickshell.sh"
             ;;
-        xdph)
-            echo "${INFO} Installing ${SKY_BLUE}xdg-desktop-portal-hyprland...${RESET}" | tee -a "$LOG"
-            execute_script "xdph.sh"
+        xdpg)
+            echo "${INFO} Installing ${SKY_BLUE}xdg-desktop-portal-gtk...${RESET}" | tee -a "$LOG"
+            execute_script "xdpg.sh"
             ;;
         bluetooth)
             echo "${INFO} Configuring ${SKY_BLUE}Bluetooth...${RESET}" | tee -a "$LOG"
@@ -438,7 +438,7 @@ for option in "${options[@]}"; do
             execute_script "rog.sh"
             ;;
         dots)
-            echo "${INFO} Installing pre-configured ${SKY_BLUE}KooL Hyprland dotfiles...${RESET}" | tee -a "$LOG"
+            echo "${INFO} Installing pre-configured ${SKY_BLUE}KooL Niri dotfiles...${RESET}" | tee -a "$LOG"
             execute_script "dotfiles-main.sh"
             ;;
         *)
@@ -460,17 +460,17 @@ execute_script "02-Final-Check.sh"
 
 printf "\n%.0s" {1..1}
 
-# Check if hyprland or hyprland-git is installed
-if pacman -Q hyprland &> /dev/null || pacman -Q hyprland-git &> /dev/null; then
-    printf "\n ${OK} 👌 Hyprland is installed. However, some essential packages may not be installed. Please see above!"
+# Check if niri is installed
+if pacman -Q niri &> /dev/null; then
+    printf "\n ${OK} 👌 Niri is installed. However, some essential packages may not be installed. Please see above!"
     printf "\n${CAT} Ignore this message if it states ${YELLOW}All essential packages${RESET} are installed as per above\n"
     sleep 2
     printf "\n%.0s" {1..2}
 
-    printf "${SKY_BLUE}Thank you${RESET} 🫰 for using 🇵🇭 ${MAGENTA}KooL's Hyprland Dots${RESET}. ${YELLOW}Enjoy and Have a good day!${RESET}"
+    printf "${SKY_BLUE}Thank you${RESET} 🫰 for using 🇵🇭 ${MAGENTA}KooL's Niri Setup${RESET}. ${YELLOW}Enjoy and Have a good day!${RESET}"
     printf "\n%.0s" {1..2}
 
-    printf "\n${NOTE} You can start Hyprland by typing ${SKY_BLUE}Hyprland${RESET} (IF SDDM is not installed) (note the capital H!).\n"
+    printf "\n${NOTE} You can start Niri by typing ${SKY_BLUE}niri${RESET} (IF SDDM is not installed).\n"
     printf "\n${NOTE} However, it is ${YELLOW}highly recommended to reboot${RESET} your system.\n\n"
 
     while true; do
@@ -496,8 +496,8 @@ if pacman -Q hyprland &> /dev/null || pacman -Q hyprland-git &> /dev/null; then
         fi
     done
 else
-    # Print error message if neither package is installed
-    printf "\n${WARN} Hyprland is NOT installed. Please check 00_CHECK-time_installed.log and other files in the Install-Logs/ directory..."
+    # Print error message if package is not installed
+    printf "\n${WARN} Niri is NOT installed. Please check 00_CHECK-time_installed.log and other files in the Install-Logs/ directory..."
     printf "\n%.0s" {1..3}
     exit 1
 fi

@@ -31,10 +31,10 @@ LOG="Install-Logs/install-$(date +%d-%H%M%S)_nvidia.log"
 
 
 # nvidia stuff
-printf "${YELLOW} Checking for other hyprland packages and remove if any..${RESET}\n"
+printf "${YELLOW} Checking for conflicting packages and remove if any..${RESET}\n"
 if pacman -Qs hyprland > /dev/null; then
-  printf "${YELLOW} Hyprland detected. removing to install Hyprland from official repo...${RESET}\n"
-    for hyprnvi in hyprland-git hyprland-nvidia hyprland-nvidia-git hyprland-nvidia-hidpi-git; do
+  printf "${YELLOW} Hyprland detected. removing to avoid conflicts with Niri...${RESET}\n"
+    for hyprnvi in hyprland-git hyprland-nvidia hyprland-nvidia-git hyprland-nvidia-hidpi-git hyprland; do
     sudo pacman -R --noconfirm "$hyprnvi" 2>/dev/null | tee -a "$LOG" || true
     done
 fi

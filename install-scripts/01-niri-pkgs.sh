@@ -1,8 +1,8 @@
 #!/bin/bash
 # 💫 https://github.com/JaKooLit 💫 #
-# Hyprland Packages #
+# Niri Packages #
 
-# edit your packages desired here. 
+# edit your packages desired here.
 # WARNING! If you remove packages here, dotfiles may not work properly.
 # and also, ensure that packages are present in AUR and official Arch Repo
 
@@ -11,24 +11,26 @@ Extra=(
 
 )
 
-hypr_package=( 
+niri_package=(
   #aylurs-gtk-shell
+  alacritty
   bc
   cliphist
-  curl 
-  grim 
-  gvfs 
+  curl
+  fuzzel
+  grim
+  gvfs
   gvfs-mtp
-  hyprpolkitagent
   imagemagick
-  inxi 
+  inxi
   jq
   kitty
   kvantum
   libspng
-  nano  
-  network-manager-applet 
-  pamixer 
+  mako
+  nano
+  network-manager-applet
+  pamixer
   pavucontrol
   playerctl
   python-requests
@@ -37,32 +39,32 @@ hypr_package=(
   qt6ct
   qt6-svg
   rofi-wayland
-  slurp 
-  swappy 
-  swaync 
+  slurp
+  swappy
+  swaync
   swww
   unzip # needed later
-  wallust 
+  wallust
   waybar
   wget
   wl-clipboard
   wlogout
   xdg-user-dirs
-  xdg-utils 
+  xdg-utils
   yad
 )
 
 # the following packages can be deleted. however, dotfiles may not work properly
-hypr_package_2=(
-  brightnessctl 
+niri_package_2=(
+  brightnessctl
   btop
   cava
   loupe
   fastfetch
   gnome-system-monitor
-  mousepad 
+  mousepad
   mpv
-  mpv-mpris 
+  mpv-mpris
   nvtop
   nwg-look
   nwg-displays
@@ -76,7 +78,7 @@ uninstall=(
   aylurs-gtk-shell
   dunst
   cachyos-hyprland-settings
-  mako
+  hyprpolkitagent
   rofi
   wallust-git
   rofi-lbonn-wayland
@@ -99,11 +101,11 @@ fi
 
 
 # Set the name of the log file to include the current date and time
-LOG="Install-Logs/install-$(date +%d-%H%M%S)_hypr-pkgs.log"
+LOG="Install-Logs/install-$(date +%d-%H%M%S)_niri-pkgs.log"
 
 # conflicting packages removal
 overall_failed=0
-printf "\n%s - ${SKY_BLUE}Removing some packages${RESET} as it conflicts with KooL's Hyprland Dots \n" "${NOTE}"
+printf "\n%s - ${SKY_BLUE}Removing some packages${RESET} as it conflicts with KooL's Niri setup \n" "${NOTE}"
 for PKG in "${uninstall[@]}"; do
   uninstall_package "$PKG" 2>&1 | tee -a "$LOG"
   if [ $? -ne 0 ]; then
@@ -118,9 +120,9 @@ fi
 printf "\n%.0s" {1..1}
 
 # Installation of main components
-printf "\n%s - Installing ${SKY_BLUE}KooL's Hyprland necessary packages${RESET} .... \n" "${NOTE}"
+printf "\n%s - Installing ${SKY_BLUE}KooL's Niri necessary packages${RESET} .... \n" "${NOTE}"
 
-for PKG1 in "${hypr_package[@]}" "${hypr_package_2[@]}" "${Extra[@]}"; do
+for PKG1 in "${niri_package[@]}" "${niri_package_2[@]}" "${Extra[@]}"; do
   install_package "$PKG1" "$LOG"
 done
 

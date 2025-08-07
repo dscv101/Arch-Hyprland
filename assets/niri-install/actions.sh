@@ -23,34 +23,26 @@ printf "\n%.0s" {1..2}
 
 while true; do
     echo -e "${BLUE}   Please choose an option:${RESET}"
-    echo -e "${YELLOW} -- 1 - Install non-git Hyprland version${RESET}"
-    echo -e "${YELLOW} -- 2 - Install git Hyprland version${RESET}"
-    echo -e "${YELLOW} -- 3 - Update Hyprland-git packages${RESET}"
-    echo -e "${MAGENTA} -- 4 - Quit${RESET}"
+    echo -e "${YELLOW} -- 1 - Install Niri${RESET}"
+    echo -e "${YELLOW} -- 2 - Uninstall Niri${RESET}"
+    echo -e "${MAGENTA} -- 3 - Quit${RESET}"
 
     read -p "${CAT} Enter your choice [1, 2, or 3]: " choice
 
     case $choice in
         1)
-            printf "\n${OK} You chose ${BLUE}non-git version of Hyprland${RESET}....... executing...\n"
-            echo -e "${YELLOW} Uninstalling some hyprland packages first...${RESET}"
-            ./scripts/uninstall.sh &&
-            ./scripts/install-hyprland.sh
+            printf "\n${OK} You chose ${BLUE}to install Niri${RESET}....... executing...\n"
+            echo -e "${YELLOW} Installing Niri and ecosystem packages...${RESET}"
+            ./scripts/install-niri.sh
             break
             ;;
         2)
-            printf "\n${OK} You chose ${BLUE}git version of Hyprland${RESET}....... executing...\n"
-            echo -e "${YELLOW} Uninstalling some hyprland packages....${RESET}"
-            ./scripts/uninstall.sh &&
-            ./scripts/install-hyprland-git.sh
+            printf "\n${OK} You chose ${BLUE}to uninstall Niri${RESET}....... executing...\n"
+            echo -e "${YELLOW} Uninstalling Niri packages...${RESET}"
+            ./scripts/uninstall.sh
             break
             ;;
         3)
-            printf "\n${OK} You chose ${BLUE} to update Hyprland-git packages${RESET}....... executing...\n"
-            ./scripts/install-hyprland-git.sh
-            break
-            ;;
-        4)
             echo -e "${MAGENTA} You have cancel it. Good Bye!!...${RESET}"
             printf "\n%.0s" {1..2}
             break

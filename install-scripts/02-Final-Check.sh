@@ -15,9 +15,11 @@ packages=(
   wl-clipboard
   wlogout
   kitty
-  hypridle
-  hyprlock
-  hyprland
+  swayidle
+  swaylock
+  niri
+  fuzzel
+  mako
 )
 
 # Local packages that should be in /usr/local/bin/

@@ -1,0 +1,7 @@
+Arch-Niri - Scripts to install and manage Niri window manager
+
+Basically created this script to easily install and manage Niri on Arch Linux
+
+
+chmod +x actions.sh
+./actions.sh

@@ -1,10 +1,10 @@
 #!/bin/bash
 # 💫 https://github.com/JaKooLit 💫 #
-# XDG-Desktop-Portals hyprland #
+# XDG-Desktop-Portals for Niri #
 
 xdg=(
-    xdg-desktop-portal-hyprland
     xdg-desktop-portal-gtk
+    xdg-desktop-portal-gnome
     umockdev
 )
 
@@ -23,10 +23,10 @@ fi
 
 
 # Set the name of the log file to include the current date and time
-LOG="Install-Logs/install-$(date +%d-%H%M%S)_xdph.log"
+LOG="Install-Logs/install-$(date +%d-%H%M%S)_xdpg.log"
 
-# XDG-DESKTOP-PORTAL-HYPRLAND
-printf "${NOTE} Installing ${SKY_BLUE}xdg-desktop-portal-hyprland${RESET}\n" 
+# XDG-DESKTOP-PORTAL-GTK for Niri
+printf "${NOTE} Installing ${SKY_BLUE}xdg-desktop-portal-gtk and related packages${RESET}\n"
 for xdgs in "${xdg[@]}"; do
   install_package "$xdgs" "$LOG"
 done

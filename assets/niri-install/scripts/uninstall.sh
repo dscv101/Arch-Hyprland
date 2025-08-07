@@ -15,36 +15,15 @@ BLUE="$(tput setaf 4)"
 RESET="$(tput sgr0)"
 
 
-# List of packages to uninstall (including git versions)
+# List of packages to uninstall
 packages=(
-    "aquamarine"
-    "aquamarine-git"
-    "hyprutils"
-    "hyprutils-git"
-    "hyprcursor"
-    "hyprcursor-git"
-    "hyprwayland-scanner"
-    "hyprwayland-scanner-git"
-    "hyprgraphics"
-    "hyprgraphics-git"
-    "hyprlang"
-    "hyprlang-git"
-    "hyprland-protocols"
-    "hyprland-protocols-git"
-    "hyprland-qt-support"
-    "hyprland-qt-support-git"
-    "hyprland-qtutils"
-    "hyprland-qtutils-git"
-    "hyprland"
-    "hyprland-git"
-    "hyprlock"
-    "hyprlock-git"
-    "hypridle"
-    "hypridle-git"
-    "xdg-desktop-portal-hyprland"
-    "xdg-desktop-portal-hyprland-git"
-    "hyprpolkitagent"
-    "hyprpolkitagent-git"
+    "niri"
+    "fuzzel"
+    "mako"
+    "swayidle"
+    "swaylock"
+    "swaybg"
+    "xwayland-satellite"
 )
 
 # Function for uninstall packages
@@ -79,12 +58,11 @@ for PKG in "${packages[@]}"; do
   fi
 done
 
-# Remove specific configuration file since on my experience, it conflicts.
-# Dont worry, it will be reinstalled by either xdph non-git or git version
-sudo rm -rf "/usr/share/xdg-desktop-portal/hyprland-portals.conf"
+# Remove specific configuration files if they exist
+sudo rm -rf "/usr/share/xdg-desktop-portal/hyprland-portals.conf" 2>/dev/null || true
 
 if [ $overall_failed -eq 0 ]; then
-  echo -e "${OK} All specified hyprland packages have been uninstalled."
+  echo -e "${OK} All specified Niri packages have been uninstalled."
 fi
 
 printf "\n%.0s" {1..2}
